@@ -1,0 +1,50 @@
+@import "design.scss";
+
+.todo {
+  &__container {
+    max-width: 450px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: $space-lg;
+    margin-top: 4vmin;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: $space-lg;
+    padding: $space-lg;
+    border: $border-width solid $border-color;
+    border-radius: $border-radius-large;
+
+    & span {
+      font-size: 16px;
+      color: $text-gray;
+    }
+
+    & ul {
+      width: 100%;
+
+      & li {
+        border: $border-width dashed $border-color;
+        border-radius: $border-radius-small;
+        padding: $space-md;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-block: 10px;
+
+        &:hover {
+          background-color: $gray-color;
+          border-color: $gray-color;
+        }
+
+        & .trash {
+          color: $border-color;
+        }
+      }
+    }
+  }
+}

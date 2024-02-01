@@ -1,0 +1,81 @@
+@import "design.scss";
+
+$checkbox-size: 24px;
+
+.item {
+  &__container {
+    border: $border-width dashed $border-color;
+    border-radius: $border-radius-small;
+    padding: $space-md;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-block: 10px;
+
+    &:hover {
+      background-color: $gray-color;
+      border-color: $gray-color;
+    }
+
+    & input {
+      position: absolute;
+      opacity: 0;
+
+      & + label {
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+        line-height: $checkbox-size;
+        padding-left: $checkbox-size + 10;
+        color: $text-color;
+
+        // Checkbox
+        &:before {
+          position: absolute;
+          display: block;
+          left: 0;
+          top: 0;
+          content: "";
+          background: transparent;
+          width: $checkbox-size;
+          height: $checkbox-size;
+
+          border: $border-width solid $border-color;
+          border-radius: 4px;
+          transition: 200ms ease-in-out all;
+        }
+
+        // Tick
+        &:after {
+          position: absolute;
+          display: block;
+          top: 3px;
+          left: 9px;
+          content: "";
+          width: 5px;
+          height: 11px;
+          border-right: 1px solid transparent;
+          border-bottom: 1px solid transparent;
+          transform: rotate(45deg);
+
+        }
+      } 
+
+      // Checked
+      &:checked {
+        & + label {
+          color: $text-gray;
+          text-decoration: line-through;
+          &:before {
+            background: $primary-color-lighter;
+            border: $border-width solid $primary-color;
+            box-shadow: none;
+          }
+          &:after {
+            border-color: $primary-color;
+          }
+        }
+      }
+    }
+  }
+}
