@@ -1,0 +1,23 @@
+@import 'design.scss';
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: $space-sm;
+  border-bottom: $border-width solid $border-color;
+  padding-bottom: $space-lg;
+  @include container;
+
+  &__title {
+    font-size: clamp(1rem, 5vw, 1.5rem); 
+    color: $text-color;
+    font-weight: 500;
+  }
+
+  &__subtitle {
+    color: $text-gray;
+  }
+
+}
