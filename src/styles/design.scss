@@ -1,0 +1,28 @@
+$primary-color: hsla(198, 94%, 43%, 1);
+$primary-color-lighter: hsla(198, 82%, 79%, 1);
+$gray-color: hsla(220, 73%, 95%, 1);
+
+$primary-gradient: linear-gradient(90deg,  hsla(198, 94%, 43%, 1) 0%, hsla(198, 84%, 63%, 1) 100%);
+$danger-gradient: linear-gradient(90deg,  hsla(0, 94%, 43%, 1) 0%, hsla(0, 84%, 63%, 1) 100%);
+
+$text-color: hsla(0, 0%, 0%, 1);
+$text-gray: hsla(0, 0%, 0%, 0.54);
+
+$border-width: 1px;
+$border-radius-small: 8px;
+$border-radius-large: 16px;
+$border-color: hsla(220, 29%, 88%, 1);
+
+$box-shadow: 0px 24px 48px -12px hsla(221, 43%, 11%, 0.18);
+
+$space-sm: 8px;
+$space-md: 16px;
+$space-lg: 24px;
+$space-xl: 32px;
+
+
+@mixin container {
+  width: 100%;
+  max-width: 1328px;
+  margin-inline: auto;
+}
