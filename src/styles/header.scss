@@ -14,10 +14,17 @@
     font-size: clamp(1rem, 5vw, 1.5rem); 
     color: $text-color;
     font-weight: 500;
+    align-items: center;
+    text-align: center;
   }
 
   &__subtitle {
+    width: 280px;
     color: $text-gray;
+  }
+
+  &__image{
+    width: 280px;
   }
 
 }
