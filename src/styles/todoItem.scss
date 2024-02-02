@@ -57,9 +57,8 @@ $checkbox-size: 24px;
           border-right: 1px solid transparent;
           border-bottom: 1px solid transparent;
           transform: rotate(45deg);
-
         }
-      } 
+      }
 
       // Checked
       &:checked {
@@ -76,6 +75,16 @@ $checkbox-size: 24px;
           }
         }
       }
+    }
+  }
+
+  &__info {
+    flex: 1;
+  }
+
+  &__trash {
+    &:hover {
+      color: hsla(0, 84%, 63%, 1);
     }
   }
 }

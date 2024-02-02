@@ -12,4 +12,9 @@ button {
   &.danger {
     background: $danger-gradient;
   }
+
+  &.secondary{
+    background: $gray-color;
+    color: $text-color;
+  }
 }

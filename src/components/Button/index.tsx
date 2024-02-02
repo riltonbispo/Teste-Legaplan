@@ -2,12 +2,13 @@ import { ButtonHTMLAttributes } from 'react'
 import '@/styles/button.scss'
 
 export type ButtonProps = {
-  variant: 'primary' | 'danger'
+  variant: 'primary' | 'danger' | 'secondary'
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
 const Button = ({ variant, ...props }: ButtonProps) => {
+
   return (
-    <button className={variant === 'danger' ? 'danger' : 'primary'}>
+    <button className={variant} {...props}>
       {props.children}
     </button>
   )

@@ -1,28 +1,36 @@
 'use client'
 import { Trash } from 'lucide-react'
-import { InputHTMLAttributes, useId, useState } from 'react'
+import { useId, useState } from 'react'
+import useTaksStore from '@/store/tasks';
+import { ItemType } from '@/types/itemType';
+import RemoveItemModal from '../RemoveItemModal';
 import '@/styles/todoItem.scss'
 
 type Props = {
-  title: string
-} & InputHTMLAttributes<HTMLInputElement>
+  item: ItemType;
+}
 
-/*
-  FIXME: Erro no change gerando no console
-*/
-
-const TodoItem = ({ title, checked, ...props }: Props) => {
-  const [isChecked, setIsChecked] = useState(checked)
+const TodoItem = ({ item }: Props) => {
+  const [showRemoveModal, setShowRemoveModal] = useState(false)
   const itemId = useId()
-  
+  const { toggleItem } = useTaksStore();
+
+  const handleCheckboxChange = () => {
+    toggleItem(item);
+  };
+
   return (
-    <li className='item__container' onClick={() => setIsChecked((prev) => !prev)}>
-      <div className='item__info'>
-        <input type="checkbox" name="" id={itemId} checked={isChecked} {...props} />
-        <label htmlFor={itemId}>{title}</label>
-      </div>
-      <Trash className='trash' />
-    </li>
+    <>
+      <li className='item__container' >
+        <div className='item__info' onClick={handleCheckboxChange}>
+          <input type="checkbox" id={itemId} checked={item.checked} />
+          <label htmlFor={itemId}>{item.title}</label>
+        </div>
+        <Trash className='item__trash' onClick={() => setShowRemoveModal(true)} />
+      </li>
+
+      {showRemoveModal && <RemoveItemModal item={item} onClose={() => setShowRemoveModal(false)} />}
+    </>
   )
 }
 

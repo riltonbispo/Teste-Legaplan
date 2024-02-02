@@ -6,6 +6,7 @@ import '@/styles/header.scss'
   TODO:
   [] Deixar a data e hora dinamico
   [] ver sobre module scss / BEM
+  [] usar header do youtube
  */
 
 const Header = () => {
