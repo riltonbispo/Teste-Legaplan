@@ -12,7 +12,7 @@ const RemoveItemModal = ({ onClose, item }: Props) => {
   const { removeItem } = useTaksStore();
 
   const handleDelItem = () => {
-    removeItem(item)
+    removeItem(item.id)
     onClose();
   };
 

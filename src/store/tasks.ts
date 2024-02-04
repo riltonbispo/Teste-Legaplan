@@ -1,33 +1,42 @@
 import { ItemType } from "@/types/itemType";
 import { create } from "zustand";
+import { persist } from 'zustand/middleware'
 
 export interface State {
   items: ItemType[];
   addItem: (item: ItemType) => void;
-  toggleItem: (item: ItemType) => void;
-  removeItem: (item: ItemType) => void;
+  toggleItem: (id: string) => void;
+  removeItem: (id: string) => void;
 }
 
-const useTaksStore = create<State>(set => ({
-  items: [],
+export const useTaksStore = create<State>()(
+  persist(
+    (set, get) => ({
+      items: [],
 
-  addItem: (item: ItemType) => {
-    set((state) => ({ items: [...state.items, item] }));
-  },
+      addItem: (item: ItemType) => {
+        set((state) => ({ items: [...state.items, item] }));
+      },
+    
+      toggleItem: (id: string) => {
+        set(state => ({
+          items: state.items.map((item) =>
+            item.id === id ? { ...item, checked: !item.checked } : item
+          ),
+        }));
+      },
+    
+      removeItem: (id: string) => {
+        set(state => ({
+          items: state.items.filter((item) => item.id !== id),
+        }));
+      },
+    }),
+    {
+      name: 'tasks',
+    },
+  ),
+)
 
-  toggleItem: (item: ItemType) => {
-    set((state) => ({
-      items: state.items.map((i) =>
-        i === item ? { ...i, checked: !i.checked } : i
-      ),
-    }));
-  },
-
-  removeItem: (item: ItemType) => {
-    set((state) => ({
-      items: state.items.filter((i) => i !== item),
-    }));
-  },
-}));
 
 export default useTaksStore;

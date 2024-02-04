@@ -16,7 +16,7 @@ const TodoItem = ({ item }: Props) => {
   const { toggleItem } = useTaksStore();
 
   const handleCheckboxChange = () => {
-    toggleItem(item);
+    toggleItem(item.id);
   };
 
   return (
